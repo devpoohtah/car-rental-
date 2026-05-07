@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>MyCar Rental Services | Premium Car Rentals in Western Visayas</title>
+    
+    <!-- Bootstrap 5 CSS + Icons + Font Awesome + Swiper + AOS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0f1f;
+            font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@500;600;700&display=swap');
+        
+        h1, h2, h3, h4, .luxury-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        body, button, input, .font-sans {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.5);
+            border-color: rgba(255,215,0,0.3);
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #F9B43A, #FB8B2C);
+            border: none;
+            color: #0a0f1f;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 40px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 18px rgba(251,139,44,0.3);
+        }
+        .btn-gold:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #FFC857, #FF9F3D);
+            color: #0a0f1f;
+            box-shadow: 0 12px 22px rgba(251,139,44,0.5);
+        }
+        .btn-outline-light {
+            border-radius: 40px;
+            border: 1.5px solid rgba(255,215,0,0.7);
+            color: white;
+            padding: 12px 28px;
+        }
+        .btn-outline-light:hover {
+            background: rgba(255,215,0,0.15);
+            border-color: gold;
+        }
+        .hero-section {
+            background: linear-gradient(107deg, rgba(5,10,25,0.85) 0%, rgba(0,0,0,0.6) 100%), url('https://placehold.co/1920x1080/1a1f2e/white?text=Luxury+Car+Rental+Hero') center/cover no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .booking-card {
+            background: rgba(10, 15, 31, 0.75);
+            backdrop-filter: blur(16px);
+            border-radius: 2rem;
+            border: 1px solid rgba(255,215,0,0.25);
+        }
+        .input-modern {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 1rem;
+            padding: 12px 16px;
+            color: white;
+            transition: all 0.2s;
+        }
+        .input-modern:focus {
+            background: rgba(255,255,255,0.18);
+            border-color: #F9B43A;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(249,180,58,0.3);
+            color: white;
+        }
+        .input-modern::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        .swiper-slide {
+            height: auto;
+        }
+        .vehicle-card, .tour-card, .driver-card {
+            background: rgba(20, 25, 45, 0.8);
+            backdrop-filter: blur(4px);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .vehicle-card:hover, .tour-card:hover, .driver-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,215,0,0.4);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5);
+        }
+        .rating-star {
+            color: #F9B43A;
+        }
+        .admin-sidebar {
+            background: rgba(15, 20, 35, 0.95);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid rgba(255,215,0,0.2);
+        }
+        .stat-card {
+            background: linear-gradient(145deg, #0f1428, #0b0f20);
+            border-radius: 1.25rem;
+            border-left: 4px solid #F9B43A;
+        }
+        .footer {
+            background: #050a15;
+            border-top: 1px solid rgba(255,215,0,0.2);
+        }
+        .compare-table td, .compare-table th {
+            border-color: rgba(255,255,255,0.1);
+            color: #eee;
+        }
+        .car-placeholder {
+            background: linear-gradient(145deg, #2a2f45, #1a1f35);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+            color: #F9B43A;
+            font-size: 3rem;
+        }
+        .profile-placeholder {
+            background: linear-gradient(145deg, #3a2e2e, #2a2222);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: #F9B43A;
+            font-size: 2.5rem;
+        }
+        .vehicle-img-placeholder {
+            background: linear-gradient(135deg, #1e2338, #13172a);
+            border-radius: 1rem;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #F9B43A;
+            font-size: 3rem;
+        }
+        @media (max-width: 768px) {
+            .hero-section { min-height: 80vh; }
+            .btn-gold, .btn-outline-light { padding: 8px 18px; font-size: 14px; }
+        }
+        .nav-link-custom {
+            color: #ddd !important;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-link-custom:hover, .nav-link-custom.active {
+            color: #F9B43A !important;
+        }
+        .bg-dark-nav {
+            background: rgba(5, 10, 20, 0.9);
+            backdrop-filter: blur(12px);
+        }
+        .floating-price {
+            background: linear-gradient(135deg, #F9B43A, #FB8B2C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        .availability-badge {
+            background: #22c55e20;
+            color: #4ade80;
+            border-radius: 40px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg fixed-top bg-dark-nav py-3">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-white fs-3" href="#">🏁 MyCar Rental <span class="text-warning">Services</span></a>
+        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+            <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#" data-page="home">Home</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#" data-page="fleet">Fleet</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#" data-page="vehicledetails">Vehicle Details</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#" data-page="booking">Booking</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#" data-page="tours">Tours</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#" data-page="drivers">Drivers</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#" data-page="contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#" data-page="admin">Admin</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main id="app-root" class="pt-5"></main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<script>
+    AOS.init({ duration: 800, once: true, offset: 50 });
+    
+    // ---------- Data with Placeholder Images for Cars and Drivers ----------
+    const vehicles = [
+        { id: "sedan", name: "Luxury Sedan", type: "Sedan", passengers: 4, transmission: "Automatic", fuel: "Petrol", luggage: 2, rate: 2500, rating: 4.8, icon: "fa-car-side" },
+        { id: "suv", name: "Premium SUV", type: "SUV", passengers: 7, transmission: "Automatic", fuel: "Diesel", luggage: 4, rate: 4500, rating: 4.9, icon: "fa-car" },
+        { id: "van", name: "Executive Van", type: "VAN", passengers: 14, transmission: "Manual/Auto", fuel: "Diesel", luggage: 6, rate: 6500, rating: 4.7, icon: "fa-van-shuttle" }
+    ];
+    
+    const tours = [
+        { name: "Iloilo City Tour", duration: "6hrs", trans: "Sedan/SUV", price: 3200, rating: 4.9 },
+        { name: "Guimaras Island Tour", duration: "Full Day", trans: "Boat + Van", price: 4500, rating: 4.8 },
+        { name: "Antique Nature Adventure", duration: "2D1N", trans: "4x4 Jeep", price: 6800, rating: 4.7 },
+        { name: "Aklan Beach Getaway", duration: "3 Days", trans: "Van + Boat", price: 7800, rating: 4.9 },
+        { name: "Gigantes Islands Tour", duration: "2 Days", trans: "Island Hopping", price: 5900, rating: 4.9 }
+    ];
+    
+    const drivers = [
+        { name: "Juan Dela Cruz", rating: 4.9, exp: 8, lang: "Filipino, English", bio: "Safe driver & tour guide specialist", available: true, initial: "" },
+        { name: "Maria Santos", rating: 5.0, exp: 6, lang: "English, Tagalog, Hiligaynon", bio: "Professional & friendly", available: true, initial: "" },
+        { name: "Carlos Rivera", rating: 4.8, exp: 12, lang: "English, Cebuano", bio: "Expert in mountain roads", available: false, initial: "CR" }
+    ];
+    
+    // Helper: dynamic navigation
+    function renderPage(pageId) {
+        const root = document.getElementById('app-root');
+        if (pageId === 'home') root.innerHTML = renderHome();
+        else if (pageId === 'fleet') root.innerHTML = renderFleet();
+        else if (pageId === 'vehicledetails') root.innerHTML = renderVehicleDetails();
+        else if (pageId === 'booking') root.innerHTML = renderBooking();
+        else if (pageId === 'tours') root.innerHTML = renderTours();
+        else if (pageId === 'drivers') root.innerHTML = renderDrivers();
+        else if (pageId === 'contact') root.innerHTML = renderContact();
+        else if (pageId === 'admin') root.innerHTML = renderAdminDashboard();
+        else root.innerHTML = renderHome();
+        
+        setTimeout(() => {
+            if (typeof initSwiper === 'function') initSwiper();
+            if (pageId === 'admin' && window.initCharts) initCharts();
+            AOS.refresh();
+        }, 100);
+    }
+    
+    // Car Placeholder Component
+    function carPlaceholder(icon, height = 160) {
+        return `<div class="vehicle-img-placeholder" style="height:${height}px"><i class="fas ${icon} fa-4x"></i><span class="ms-2 fs-6 text-white-50">[Car Image]</span></div>`;
+    }
+    
+    function driverAvatar(initial, size = 80) {
+        return `<div class="profile-placeholder" style="width:${size}px; height:${size}px; font-size:${size/2}px"><i class="fas fa-user-circle"></i><span class="ms-1">${initial}</span></div>`;
+    }
+    
+    // HOME PAGE
+    function renderHome() {
+        return `
+        <div class="hero-section">
+            <div class="container position-relative z-2 py-5">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <h1 class="display-3 fw-bold">Drive Anywhere in <span class="text-warning">Western Visayas</span></h1>
+                        <p class="lead fs-4 mt-3">Affordable • Reliable • Professional Car Rentals</p>
+                        <div class="d-flex gap-3 mt-4">
+                            <button class="btn-gold btn rounded-pill" onclick="document.querySelector('[data-page=\\'booking\\']').click()">Book Now</button>
+                            <button class="btn-outline-light btn rounded-pill" onclick="document.querySelector('[data-page=\\'fleet\\']').click()">Explore Fleet</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="booking-card p-4 p-xl-5">${renderBookingForm()}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container py-5">${renderFeaturedVehicles()}</div>
+        <div class="container py-5">${renderDestinationsSection()}</div>
+        <div class="container py-5">${renderTourOffers()}</div>
+        <div class="container py-4">${renderDriverHighlights()}</div>
+        <div class="container py-5">${renderTestimonials()}</div>
+        <div class="container py-5">${renderFaqAccordion()}</div>
+        <div class="container pb-5">${renderNewsletter()}</div>
+        ${renderFooter()}
+        `;
+    }
+    
+    function renderBookingForm() {
+        return `<h3 class="mb-4">Instant Booking</h3>
+        <div class="row g-3">
+            <div class="col-md-6"><input type="text" class="form-control input-modern" placeholder="Pickup Location (Iloilo, Guimaras..)"></div>
+            <div class="col-md-6"><input type="text" class="form-control input-modern" placeholder="Dropoff Location"></div>
+            <div class="col-md-6"><input type="datetime-local" class="form-control input-modern" id="pickupDate"></div>
+            <div class="col-md-6"><input type="datetime-local" class="form-control input-modern" id="returnDate"></div>
+            <div class="col-md-6"><select class="form-select input-modern"><option>Sedan</option><option>SUV</option><option>Van</option></select></div>
+            <div class="col-md-6"><select class="form-select input-modern"><option>Self-drive</option><option>With Driver</option></select></div>
+            <div class="col-12"><input class="form-control input-modern" placeholder="Promo Code"></div>
+            <button class="btn-gold w-100 mt-2" onclick="alert('Demo: Dynamic price ₱2,500/day + deposit ₱3,000')">Get Estimate</button>
+        </div>`;
+    }
+    
+    function renderFeaturedVehicles() {
+        return `<div data-aos="fade-up"><h2 class="mb-5 text-center">Our Premium Fleet</h2><div class="row g-4">${vehicles.map(v => `<div class="col-md-4"><div class="vehicle-card p-3">${carPlaceholder(v.icon, 180)}<h4 class="mt-3">${v.name}</h4><p><i class="fas fa-users"></i> ${v.passengers} seats · ${v.transmission}</p><p class="fs-5 fw-bold text-warning">₱${v.rate.toLocaleString()}/day</p><button class="btn-gold btn-sm px-4" onclick="document.querySelector('[data-page=\\'booking\\']').click()">Book Now</button></div></div>`).join('')}</div></div>`;
+    }
+    
+    function renderDestinationsSection() { return `<div data-aos="zoom-in"><h2 class="text-center mb-4">Popular Destinations</h2><div class="row g-3"><div class="col-md-3"><div class="glass-card p-4 text-center"><i class="fas fa-city fa-2x text-warning"></i><h5>Iloilo City</h5></div></div><div class="col-md-3"><div class="glass-card p-4 text-center"><i class="fas fa-umbrella-beach fa-2x text-warning"></i><h5>Guimaras</h5></div></div><div class="col-md-3"><div class="glass-card p-4 text-center"><i class="fas fa-tree fa-2x text-warning"></i><h5>Antique</h5></div></div><div class="col-md-3"><div class="glass-card p-4 text-center"><i class="fas fa-water fa-2x text-warning"></i><h5>Aklan</h5></div></div></div></div>`; }
+    function renderTourOffers() { return `<h2 class="text-center mb-4">Tour Packages</h2><div class="row">${tours.map(t => `<div class="col-md-6 col-lg-4 mb-3"><div class="tour-card p-3"><div class="car-placeholder" style="height:120px; font-size:2rem;"><i class="fas fa-map-marked-alt"></i> 🏝️</div><h4 class="mt-2">${t.name}</h4><p>⏱️ ${t.duration} · 🚗 ${t.trans}</p><p><span class="floating-price fw-bold">₱${t.price}</span> /pax</p><button class="btn-gold btn-sm">Book Tour</button></div></div>`).join('')}</div>`; }
+    function renderDriverHighlights() { return `<h2 class="text-center mb-4">Elite Drivers</h2><div class="row">${drivers.slice(0,2).map(d => `<div class="col-md-6 mb-3"><div class="driver-card d-flex p-3 align-items-center gap-3"><div>${driverAvatar(d.initial, 70)}</div><div><h5>${d.name}</h5><div>⭐ ${d.rating} · ${d.exp} yrs</div><span class="availability-badge">${d.available ? 'Available' : 'On Trip'}</span></div></div></div>`).join('')}</div>`; }
+    
+    function renderTestimonials() { 
+        return `<div class="swiper testimonialSwiper"><div class="swiper-wrapper"><div class="swiper-slide"><div class="glass-card p-4 text-center"><div class="profile-placeholder mx-auto" style="width:70px;height:70px;font-size:2rem;"><i class="fas fa-smile"></i></div><p class="mt-2">"Amazing service, luxury cars!"</p><div>⭐⭐⭐⭐⭐</div><h6>— Anna Reyes</h6></div></div><div class="swiper-slide"><div class="glass-card p-4 text-center"><div class="profile-placeholder mx-auto" style="width:70px;height:70px;font-size:2rem;"><i class="fas fa-user-tie"></i></div><p>"Best rental in Iloilo, smooth trip"</p><div>⭐⭐⭐⭐⭐</div><h6>— Mark Gomez</h6></div></div></div><div class="swiper-pagination"></div></div>`; 
+    }
+    
+    function renderFaqAccordion() { return `<h2 class="text-center mb-4">FAQ</h2><div class="accordion" id="faqAccordion">${[["Age Requirements","Minimum 21 years old with valid license"],["Security Deposit","₱5,000 refundable deposit"],["Cancellation","Free cancellation 24h prior"],["Driver's License","Valid PH license or International permit"],["Insurance","Comprehensive coverage included"]].map((q,i)=>`<div class="accordion-item bg-transparent text-white"><h2 class="accordion-header"><button class="accordion-button bg-dark text-white" data-bs-toggle="collapse" data-bs-target="#faq${i}">${q[0]}</button></h2><div id="faq${i}" class="accordion-collapse collapse"><div class="accordion-body bg-dark text-white-50">${q[1]}</div></div></div>`).join('')}</div>`; }
+    
+    function renderNewsletter() { return `<div class="glass-card p-5 text-center"><h3>Newsletter</h3><div class="input-group"><input class="form-control input-modern" placeholder="Email"><button class="btn-gold">Subscribe</button></div></div>`; }
+    
+    function renderFooter() { return `<footer class="footer py-5 mt-5"><div class="container"><div class="row"><div class="col-md-4"><i class="fas fa-car"></i> MyCar Rental Services<br/>📞 +63 912 3456 789<br/>📍 Iloilo City, Philippines</div><div class="col-md-4"><i class="fab fa-facebook me-2"></i><i class="fab fa-instagram me-2"></i><i class="fab fa-twitter"></i></div><div class="col-md-4"><iframe width="200" height="100" style="border:0; border-radius:12px" loading="lazy" src="https://maps.google.com/maps?q=Iloilo%20City&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe></div></div><hr class="mt-4"/><p class="text-center">© 2025 MyCar Rental Services - Western Visayas</p></div></footer>`; }
+    
+    // FLEET PAGE
+    function renderFleet() { return `<div class="container py-5"><h2 class="mb-5">Our Vehicles</h2><div class="row">${vehicles.map(v => `<div class="col-md-4 mb-4"><div class="vehicle-card p-3">${carPlaceholder(v.icon, 180)}<h3 class="mt-3">${v.name}</h3><p><i class="fas fa-user-friends"></i> ${v.passengers} passengers<br>${v.fuel} · ${v.transmission}</p><div class="d-flex justify-content-between"><h4 class="text-warning">₱${v.rate}/day</h4><button class="btn-gold btn-sm" onclick="document.querySelector('[data-page=\\'vehicledetails\\']').click()">View Details</button></div></div></div>`).join('')}</div><div class="mt-5"><h3>Comparison Tool</h3><table class="table compare-table table-dark table-bordered"><thead><tr><th>Model</th><th>Daily Rate</th><th>Passengers</th><th>Transmission</th><th>Best Value</th></tr></thead><tbody>${vehicles.map(v => `<tr><td>${v.name}</td><td>₱${v.rate}</td><td>${v.passengers}</td><td>${v.transmission}</td><td>${v.id==='suv'?'<i class="fas fa-crown text-warning"></i> Best':'—'}</td></tr>`).join('')}</tbody></table></div></div>`; }
+    
+    // VEHICLE DETAILS with placeholder gallery
+    function renderVehicleDetails() { const v = vehicles[0]; return `<div class="container py-5"><div class="row"><div class="col-md-7"><div class="vehicle-img-placeholder" style="height:320px; font-size:5rem;"><i class="fas ${v.icon} fa-5x"></i><div class="small mt-2"></div></div><div class="row g-2 mt-2"><div class="col-4"><div class="car-placeholder" style="height:80px;"><i class="fas fa-car"></i></div></div><div class="col-4"><div class="car-placeholder" style="height:80px;"><i class="fas fa-cog"></i></div></div><div class="col-4"><div class="car-placeholder" style="height:100px;"><i class="fas fa-gas-pump"></i></div></div></div></div><div class="col-md-5"><div class="glass-card p-4 sticky-top" style="top:100px"><h2>${v.name}</h2><p>⭐ ${v.rating} (214 reviews)</p><ul class="list-unstyled"><li>🚗 ${v.passengers} seats</li><li>⚙️ ${v.transmission}</li><li>⛽ ${v.fuel}</li><li>🧳 Luggage: ${v.luggage} suitcases</li></ul><h3 class="text-warning">₱${v.rate}/day</h3><button class="btn-gold w-100 mt-3">Book This Vehicle</button></div></div></div><div><h4>Customer Reviews</h4><div class="glass-card p-3 mt-2"><i class="fas fa-star rating-star"></i> “Perfect condition, smooth ride” - John</div><div class="glass-card p-3 mt-2"><i class="fas fa-star rating-star"></i> “Excellent service, highly recommend” - Maria</div></div></div>`; }
+    
+    // BOOKING Page
+    function renderBooking() { return `<div class="container py-5"><div class="row"><div class="col-lg-6"><div class="glass-card p-4">${renderBookingForm()}</div></div><div class="col-lg-6"><div class="glass-card p-4"><h4>Booking Summary</h4><p>Estimated Total: <span class="text-warning fs-3">₱7,500</span><br/>Deposit: ₱3,000<br/>Remaining: ₱4,500</p><button class="btn-gold w-100">Confirm Reservation</button></div></div></div></div>`; }
+    
+    // TOURS PAGE
+    function renderTours() { return `<div class="container py-5"><h2>All Tour Packages</h2><div class="row">${tours.map(t => `<div class="col-md-4 my-3"><div class="tour-card p-4"><div class="car-placeholder" style="height:130px;"><i class="fas fa-umbrella-beach fa-3x"></i></div><h3 class="mt-2">${t.name}</h3><p>${t.duration} · ${t.trans}</p><p>⭐ ${t.rating} · from ₱${t.price}</p><button class="btn-gold">Book Tour</button></div></div>`).join('')}</div></div>`; }
+    
+    // DRIVERS PAGE with profile placeholders
+    function renderDrivers() { return `<div class="container py-5"><h2>Professional Drivers</h2><div class="row">${drivers.map(d => `<div class="col-md-4 mb-4"><div class="driver-card text-center p-4"><div class="d-flex justify-content-center">${driverAvatar(d.initial, 100)}</div><h4 class="mt-3">${d.name}</h4><p>⭐ ${d.rating} (${d.exp} years experience)<br/>🗣️ ${d.lang}</p><p class="small">${d.bio}</p><span class="availability-badge">${d.available ? "Available Now" : "Fully Booked"}</span><button class="btn-gold mt-3 w-100">Hire Driver</button></div></div>`).join('')}</div></div>`; }
+    
+    // CONTACT PAGE
+    function renderContact() { return `<div class="container py-5"><div class="row"><div class="col-md-6"><div class="glass-card p-4"><h3>Contact Us</h3><input class="form-control input-modern mb-3" placeholder="Name"><input class="form-control input-modern mb-3" placeholder="Email"><textarea rows="4" class="form-control input-modern" placeholder="Message"></textarea><button class="btn-gold mt-3">Send Message</button></div></div><div class="col-md-6"><div class="glass-card p-4"><h4>Visit Us</h4><p>Iloilo Business Park, Mandurriao, Iloilo City<br/>Hotline: +63 998 765 4321</p><iframe width="100%" height="250" style="border:0; border-radius:16px" loading="lazy" src="https://maps.google.com/maps?q=Iloilo+City+Hall&output=embed"></iframe></div></div></div></div>`; }
+    
+    // ADMIN DASHBOARD
+    function renderAdminDashboard() {
+        return `<div class="container-fluid mt-5 pt-3"><div class="row"><div class="col-md-3 col-lg-2 admin-sidebar min-vh-100 p-3"><h5 class="text-warning">MyCar Admin</h5><ul class="nav flex-column"><li class="nav-item"><a class="nav-link text-white-50"><i class="fas fa-chart-line"></i> Dashboard</a></li><li class="nav-item"><a class="nav-link text-white-50"><i class="fas fa-car"></i> Vehicles</a></li><li class="nav-item"><a class="nav-link text-white-50"><i class="fas fa-calendar-alt"></i> Bookings</a></li><li class="nav-item"><a class="nav-link text-white-50"><i class="fas fa-users"></i> Drivers</a></li></ul></div><div class="col-md-9 col-lg-10 p-4"><div class="row g-4"><div class="col-md-3"><div class="stat-card p-3"><h6>Total Revenue</h6><h2 class="text-warning">₱1.2M</h2></div></div><div class="col-md-3"><div class="stat-card p-3"><h6>Bookings</h6><h2>156</h2><small>+23%</small></div></div><div class="col-md-3"><div class="stat-card p-3"><h6>Active Fleet</h6><h2>24</h2></div></div><div class="col-md-3"><div class="stat-card p-3"><h6>Drivers</h6><h2>8</h2></div></div></div><div class="mt-4 row"><div class="col-md-6"><canvas id="revenueChart" width="400" height="200"></canvas></div><div class="col-md-6"><div class="glass-card p-3"><h5>Recent Bookings</h5><table class="table table-sm table-dark"><thead><tr><th>Car</th><th>Customer</th><th>Status</th></tr></thead><tbody><tr><td>Sedan</td><td>John Lim</td><td>Confirmed</td></tr><tr><td>SUV</td><td>Sarah Gomez</td><td>Ongoing</td></tr><tr><td>Van</td><td>Tour Group</td><td>Completed</td></tr></tbody></table></div></div></div><div class="mt-4 glass-card p-3"><h5>Vehicle Management</h5><table class="table table-dark"><thead><tr><th>Model</th><th>License Plate</th><th>Status</th></tr></thead><tbody><tr><td>Sedan</td><td>ILO-123</td><td>Available</td></tr><tr><td>SUV</td><td>AKL-456</td><td>Rented</td></tr><tr><td>Van</td><td>GUI-789</td><td>Maintenance</td></tr></tbody></table></div></div></div></div>`;
+    }
+    
+    function initCharts() {
+        const ctx = document.getElementById('revenueChart')?.getContext('2d');
+        if(ctx) new Chart(ctx, { type: 'line', data: { labels: ['Jan','Feb','Mar','Apr','May'], datasets: [{ label: 'Revenue (₱)', data: [380000,420000,510000,630000,720000], backgroundColor: 'rgba(249,180,58,0.2)', borderColor: '#F9B43A', tension: 0.3 }] } });
+    }
+    
+    function initSwiper() { new Swiper('.testimonialSwiper', { loop: true, autoplay: { delay: 4000 }, pagination: { el: '.swiper-pagination' } }); }
+    
+    document.querySelectorAll('[data-page]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = link.getAttribute('data-page');
+            renderPage(page);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+    renderPage('home');
+    window.renderPage = renderPage;
+    window.initCharts = initCharts;
+</script>
+</body>
+</html>
